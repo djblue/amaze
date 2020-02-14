@@ -1,0 +1,8 @@
+{:deps true
+ :dev-http {9090 ["resources/" "target/"]}
+ :builds
+ {:app {:output-dir "target/"
+        :asset-path "."
+        :target :browser
+        :modules {:main {:init-fn amaze.core/main!}}
+        :devtools {:after-load amaze.core/reload!}}}}

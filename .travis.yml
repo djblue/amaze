@@ -1,0 +1,28 @@
+sudo: true
+language: java
+jdk:
+  - openjdk8
+cache:
+  directories:
+    - $HOME/.m2
+    - .cpcache
+install:
+  - curl -O https://download.clojure.org/install/linux-install-1.10.1.507.sh
+  - chmod +x linux-install-1.10.1.507.sh
+  - sudo ./linux-install-1.10.1.507.sh
+  - nvm install 13
+  - npm install
+script:
+  - mkdir gh-pages
+  - clojure -m amaze.build > gh-pages/index.html
+branches:
+  only:
+  - master
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  local-dir: gh-pages
+  target-branch: gh-pages
+  on:
+    branch: master
