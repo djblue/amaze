@@ -80,8 +80,8 @@
        (fn [position]
          (map #(-> #{position %})
               (neighbors position)))
-       (for [row (range (inc nubmer-of-cells))
-             column (range (inc nubmer-of-cells))]
+       (for [row (range nubmer-of-cells)
+             column (range nubmer-of-cells)]
          {:row row :column column}))))))
 
 (defn maze [state]
